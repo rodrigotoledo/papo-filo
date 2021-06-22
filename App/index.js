@@ -24,33 +24,20 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-const AppStack = createStackNavigator();
-
 const AuthStack = createStackNavigator();
 const AuthStackScreen = () => (
-  <AuthStack.Navigator>
-    <AuthStack.Screen name="Login" component={LoginScreen} title={false} />
-    <AuthStack.Screen name="Register" component={RegisterScreen}  title={false} />
+  <AuthStack.Navigator headerMode='none'>
+    <AuthStack.Screen name="Login" component={TabsAuthScreen} />
   </AuthStack.Navigator>
 );
 
+const AppStack = createStackNavigator();
 const AppStackScreen = () => (
   <AppStack.Navigator>
     <AppStack.Screen name="Home" component={TabsScreen} />
     <AppStack.Screen name="Profile" component={ProfileScreen} />
   </AppStack.Navigator>
 );
-
-const RootStack = createStackNavigator();
-const RootStackScreen = ({userToken}) => (
-  <RootStack.Navigator headerMode="none">
-    {userToken ? (
-      <RootStack.Screen name="App" component={AppStackScreen} />
-    ):(
-      <RootStack.Screen name="Auth" component={AuthStackScreen} />
-    )}
-  </RootStack.Navigator>
-)
 
 const Tabs = createBottomTabNavigator();
 const TabsScreen = () => (
@@ -60,7 +47,25 @@ const TabsScreen = () => (
   </Tabs.Navigator>
 );
 
+const TabsAuthScreen = () => (
+  <Tabs.Navigator>
+    <Tabs.Screen name="Login" component={LoginScreen} options={{title: 'Entrar em sua conta'}} />
+    <Tabs.Screen name="Register" component={RegisterScreen} options={{title: 'Criar conta'}} />
+  </Tabs.Navigator>
+);
+
 const Drawer = createDrawerNavigator()
+
+const RootStack = createStackNavigator();
+const RootStackScreen = ({userToken}) => (
+  <RootStack.Navigator headerMode='none'>
+    {userToken ? (
+      <RootStack.Screen name="App" component={AppStackScreen} />
+    ):(
+      <RootStack.Screen name="Auth" component={AuthStackScreen} />
+    )}
+  </RootStack.Navigator>
+)
 
 export default () => {
   const [isLoading, setIsLoading] = React.useState(true);

@@ -1,30 +1,21 @@
 import React from 'react'
-import { Text, View, StyleSheet, Button } from 'react-native'
-import { AuthContext } from '../App/context';
+import { Container, Title, Input } from '../App/styles';
+import SignInButton from '../components/SignInButton';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
-export default LoginScreen = ({navigation}) => {
-  const { signIn } = React.useContext(AuthContext);
+
+export default LoginScreen = () => {
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+
+
   return (
-    <View style={styles.container}>
-      <Text>Login Screen</Text>
-      <Button title='Sign in'
-        onPress={() => signIn()}
-      />
-      <Button title='Create Account'
-        onPress={() => {
-          navigation.navigate('Register'), {
-            screen: 'Register'
-          }
-        }}
-      />
-    </View>
+    <Container>
+      <Icon name="users" color="#4c4d4c" size={100} style={{  marginBottom: 10 }} />
+      <Title>Informe as credenciais para acessar sua conta</Title>
+      <Input placeholder="Informe seu email" placeholderTextColor='#4c4d4c' value={email} onChangeText={v => setEmail(v)} textContentType='emailAddress' keyboardType='email-address' />
+      <Input placeholder="Informe sua senha" placeholderTextColor='#4c4d4c' value={password} onChangeText={v => setPassword(v)} secureTextEntry={true} />
+      <SignInButton />
+    </Container>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
-})

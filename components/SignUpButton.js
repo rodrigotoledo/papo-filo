@@ -7,7 +7,7 @@ export default SignUpButton = () => {
   const { signUp } = React.useContext(AuthContext);
   return (
   <View style={{width: '100%'}}>
-    <Icon.Button name="user-plus" backgroundColor="#2eab62" size={20} style={{ borderRadius: '8px', padding: 16, width: '100%'}} onPress={() => signUp()}>
+    <Icon.Button name="user-plus" backgroundColor="#2eab62" size={20} style={{ borderRadius: 8, padding: 16, width: '100%'}} onPress={() => signUp()}>
       <Text style={{ color: '#fff', fontSize: 18, }}>
         Criar sua conta
       </Text>

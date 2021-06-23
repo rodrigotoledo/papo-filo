@@ -1,9 +1,9 @@
 import React from 'react'
 import { Text, View, StyleSheet } from 'react-native'
 
-export default ProfileScreen = () =>(
+export default RegisterResumeScreen = () =>(
   <View style={styles.container}>
-    <Text>ProfileScreen</Text>
+    <Text>RegisterResumeScreen</Text>
   </View>
 )
 const styles = StyleSheet.create({

@@ -7,7 +7,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { AuthContext } from './context';
 import LoadingScreen from '../screens/LoadingScreen';
 import HomeScreen from '../screens/HomeScreen';
-import ProfileScreen from '../screens/ProfileScreen';
+import RegisterResumeScreen from '../screens/RegisterResumeScreen';
 import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 
@@ -33,22 +33,39 @@ const AuthStackScreen = () => (
 
 const AppStack = createStackNavigator();
 const AppStackScreen = () => (
-  <AppStack.Navigator>
+  <AppStack.Navigator headerMode='none'>
     <AppStack.Screen name="Home" component={TabsScreen} />
-    <AppStack.Screen name="Profile" component={ProfileScreen} />
   </AppStack.Navigator>
 );
 
 const Tabs = createBottomTabNavigator();
 const TabsScreen = () => (
-  <Tabs.Navigator>
-    <Tabs.Screen name="Home" component={HomeScreen} />
-    <Tabs.Screen name="Profile" component={ProfileScreen} />
+  <Tabs.Navigator tabBarOptions={{
+    activeTintColor: '#e91e63',
+    tabStyle: {
+      justifyContent: 'center',
+    },
+    labelStyle: {
+      fontSize: 16,
+    },
+    showIcon: false
+  }}>
+    <Tabs.Screen name="Home" component={HomeScreen} options={{title: 'Bater Ponto'}} />
+    <Tabs.Screen name="RegisterResume" component={RegisterResumeScreen} options={{title: 'Histórico'}} />
   </Tabs.Navigator>
 );
 
 const TabsAuthScreen = () => (
-  <Tabs.Navigator>
+  <Tabs.Navigator tabBarOptions={{
+    activeTintColor: '#e91e63',
+    tabStyle: {
+      justifyContent: 'center',
+    },
+    labelStyle: {
+      fontSize: 16,
+    },
+    showIcon: false
+  }}>
     <Tabs.Screen name="Login" component={LoginScreen} options={{title: 'Entrar em sua conta'}} />
     <Tabs.Screen name="Register" component={RegisterScreen} options={{title: 'Criar conta'}} />
   </Tabs.Navigator>
@@ -69,7 +86,7 @@ const RootStackScreen = ({userToken}) => (
 
 export default () => {
   const [isLoading, setIsLoading] = React.useState(true);
-  const [userToken, setUserToken] = React.useState(null);
+  const [userToken, setUserToken] = React.useState('asdf');
 
   const authContext = React.useMemo(() => {
     return {

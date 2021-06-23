@@ -19,7 +19,7 @@ const ButtonText = styled.Text`
 `;
 
 const Button = styled.TouchableOpacity`
-  background-color: #2eab62;
+  background-color: #a83295;
   border-radius: 8px;
   padding: 16px;
   text-align: center;
@@ -29,11 +29,11 @@ const Button = styled.TouchableOpacity`
 const Input = styled.TextInput`
   width: 100%;
   border-radius: 8px;
-  background-color: #c0edd3;
-  padding: 20px;
+  background-color: #e37fd3;
+  padding: 16px;
   margin-top: 10px;
   margin-bottom: 10px;
-  color: #000;
+  color: #fff;
 `;
 
 export { Title, Container, Button, ButtonText, Input };
